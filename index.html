@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>WhatsApp Chat Design</title>
+  <link
+   rel="stylesheet"
+   href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+  />
+  <style>
+   body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background-color: #e5ddd5;
+   }
+
+   .chat-container {
+    display: flex;
+    height: 100vh;
+    overflow: hidden;
+   }
+
+   .sidebar {
+    width: 30%;
+    background-color: #fff;
+    border-right: 1px solid #ddd;
+    display: flex;
+    flex-direction: column;
+   }
+
+   .search-box {
+    padding: 10px;
+    display: flex;
+    align-items: center;
+    border-bottom: 1px solid #ddd;
+   }
+
+   .search-box i {
+    margin-right: 10px;
+    color: #888;
+   }
+
+   .search-box input {
+    width: 100%;
+    padding: 5px;
+    border: none;
+    outline: none;
+    font-size: 14px;
+   }
+
+   .chat-list {
+    flex-grow: 1;
+    overflow-y: auto;
+   }
+
+   .chat-item {
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    border-bottom: 1px solid #ddd;
+    cursor: pointer;
+    transition: background-color 0.2s;
+   }
+
+   .chat-item:hover {
+    background-color: #f0f0f0;
+   }
+
+   .chat-item img {
+    border-radius: 50%;
+    margin-right: 10px;
+    width: 40px;
+    height: 40px;
+   }
+
+   .chat-details {
+    flex-grow: 1;
+   }
+
+   .chat-details h4 {
+    margin: 0;
+    font-size: 14px;
+    color: #000;
+   }
+
+   .chat-details p {
+    margin: 0;
+    color: #888;
+    font-size: 12px;
+   }
+
+   .chat-time {
+    color: #888;
+    font-size: 12px;
+    white-space: nowrap;
+   }
+
+   .chat-window {
+    width: 70%;
+    display: flex;
+    flex-direction: column;
+    background-color: #efeae2;
+   }
+
+   .chat-header {
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    background-color: #075e54;
+    color: #fff;
+   }
+
+   .chat-header img {
+    border-radius: 50%;
+    margin-right: 10px;
+    width: 40px;
+    height: 40px;
+   }
+
+   .chat-header h4 {
+    margin: 0;
+    font-size: 18px;
+   }
+
+   .chat-content {
+    flex-grow: 1;
+    padding: 10px;
+    overflow-y: auto;
+   }
+
+   .chat-message {
+    display: flex;
+    align-items: flex-start;
+    margin-bottom: 10px;
+   }
+
+   .chat-message img {
+    border-radius: 50%;
+    margin-right: 10px;
+    width: 40px;
+    height: 40px;
+   }
+
+   .message {
+    background-color: #fff;
+    padding: 10px;
+    border-radius: 5px;
+    position: relative;
+    max-width: 70%;
+   }
+
+   .message-time {
+    font-size: 10px;
+    color: #888;
+    position: absolute;
+    bottom: -15px;
+    right: 10px;
+   }
+
+   .message-input {
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    border-top: 1px solid #ddd;
+    background-color: #fff;
+   }
+
+   .message-input input {
+    flex-grow: 1;
+    padding: 10px;
+    border: none;
+    outline: none;
+    border-radius: 20px;
+    background-color: #f0f0f0;
+    font-size: 14px;
+   }
+
+   .message-input button {
+    background-color: #075e54;
+    border: none;
+    color: #fff;
+    padding: 10px;
+    margin-left: 10px;
+    border-radius: 50%;
+    cursor: pointer;
+   }
+
+   .message-input button i {
+    font-size: 20px;
+   }
+
+   @media (max-width: 768px) {
+    .chat-container {
+     flex-direction: column;
+    }
+
+    .sidebar {
+     width: 100%;
+     height: 40%;
+    }
+
+    .chat-window {
+     width: 100%;
+     height: 60%;
+    }
+   }
+
+   @media (max-width: 480px) {
+    .chat-header h4 {
+     font-size: 16px;
+    }
+
+    .chat-details h4 {
+     font-size: 12px;
+    }
+
+    .chat-details p {
+     font-size: 10px;
+    }
+
+    .chat-time {
+     font-size: 10px;
+    }
+   }
+  </style>
+ </head>
+ <body>
+  <div class="chat-container">
+   <div class="sidebar">
+    <div class="search-box">
+     <i class="fa fa-search"></i>
+     <input type="text" placeholder="Search" />
+    </div>
+    <div class="chat-list">
+     <div class="chat-item" onclick="openChat('chat1')">
+      <img src="https://via.placeholder.com/40" alt="Profile Picture" />
+      <div class="chat-details">
+       <h4>+977 981-6...</h4>
+       <p>Ok</p>
+      </div>
+      <span class="chat-time">Yesterday</span>
+     </div>
+     <div class="chat-item" onclick="openChat('chat2')">
+      <img src="https://via.placeholder.com/40" alt="Cricket Chautari" />
+      <div class="chat-details">
+       <h4>Cricket Chautari</h4>
+       <p>B: okay</p>
+      </div>
+      <span class="chat-time">Yesterday</span>
+     </div>
+     <!-- Add more chat items here -->
+    </div>
+   </div>
+   <div class="chat-window">
+    <div class="chat-header">
+     <img src="https://via.placeholder.com/40" alt="Surendra Tim" />
+     <h4 id="chat-title">Surendra tim</h4>
+    </div>
+    <div class="chat-content" id="chat1">
+     <div class="chat-message">
+      <img src="https://via.placeholder.com/40" alt="Profile Picture" />
+      <div class="message">
+       <p>Vai lagyo Canada tira</p>
+       <span class="message-time">08:06</span>
+      </div>
+     </div>
+     <div class="chat-message">
+      <img src="https://via.placeholder.com/40" alt="Profile Picture" />
+      <div class="message">
+       <p>her ta</p>
+       <span class="message-time">19:54</span>
+      </div>
+     </div>
+     <!-- Add more messages here -->
+    </div>
+    <div class="chat-content" id="chat2" style="display: none">
+     <div class="chat-message">
+      <img src="https://via.placeholder.com/40" alt="Profile Picture" />
+      <div class="message">
+       <p>Message from Cricket Chautari</p>
+       <span class="message-time">10:00</span>
+      </div>
+     </div>
+     <!-- Add more messages here -->
+    </div>
+    <div class="message-input">
+     <input type="text" placeholder="Type a message" />
+     <button><i class="fa fa-paper-plane"></i></button>
+    </div>
+   </div>
+  </div>
+  <script>
+   function openChat(chatId) {
+    var chatContents = document.getElementsByClassName('chat-content')
+    for (var i = 0; i < chatContents.length; i++) {
+     chatContents[i].style.display = 'none'
+    }
+    document.getElementById(chatId).style.display = 'block'
+    var chatTitle = chatId === 'chat1' ? 'Surendra tim' : 'Cricket Chautari'
+    document.getElementById('chat-title').textContent = chatTitle
+   }
+  </script>
+ </body>
+</html>
